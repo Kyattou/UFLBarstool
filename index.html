@@ -2,49 +2,43 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>UFLBarstool Mobile</title>
 
-<!-- ======================================================
-     FRAMEWORKS
-====================================================== -->
+<!-- ================= FRAMEWORKS ================= -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-<!-- ======================================================
-     GLOBAL STYLES
-====================================================== -->
+<!-- ================= GLOBAL STYLES ================= -->
 <style>
 :root{
   --bg:#000;
   --card:#0b0b0b;
   --border:#1f1f1f;
   --text:#fff;
-  --muted:#888;
+  --muted:#8a8a8a;
 }
 *{box-sizing:border-box}
-body{
+html,body{
+  margin:0;
+  padding:0;
+  height:100%;
   background:#000;
+  color:#fff;
   font-family:Inter,system-ui;
-  color:var(--text);
 }
 .app{
-  max-width:390px;
-  height:840px;
-  margin:20px auto;
+  height:100vh;
+  width:100vw;
   background:#000;
-  border-radius:36px;
-  overflow:hidden;
-  border:1px solid #222;
-  box-shadow:0 0 80px rgba(255,255,255,.08);
+  display:flex;
+  flex-direction:column;
 }
 
-/* ======================================================
-   HEADER
-====================================================== */
+/* ================= HEADER ================= */
 .header{
-  padding:18px 18px 10px;
+  padding:18px 18px 12px;
 }
 .header h1{
   font-size:22px;
@@ -55,12 +49,11 @@ body{
   color:var(--muted);
 }
 
-/* ======================================================
-   PAGES
-====================================================== */
+/* ================= PAGES ================= */
 .pages{
+  flex:1;
   position:relative;
-  height:670px;
+  overflow:hidden;
 }
 .page{
   position:absolute;
@@ -71,20 +64,18 @@ body{
 }
 .page.active{
   display:block;
-  animation:fade .35s ease;
+  animation:fade .3s ease;
 }
 @keyframes fade{
-  from{opacity:.6;transform:translateY(8px)}
+  from{opacity:.6;transform:translateY(6px)}
   to{opacity:1;transform:none}
 }
 
-/* ======================================================
-   UI COMPONENTS
-====================================================== */
+/* ================= UI COMPONENTS ================= */
 .section-title{
   font-size:15px;
   font-weight:600;
-  margin:14px 0 8px;
+  margin:16px 0 8px;
 }
 .card-ui{
   background:var(--card);
@@ -114,9 +105,25 @@ body{
   font-size:11px;
 }
 
-/* ======================================================
-   SKELETON
-====================================================== */
+/* ================= GAMES ================= */
+.game-card{
+  background:#0b0b0b;
+  border:1px solid #1f1f1f;
+  border-radius:20px;
+  padding:14px;
+  margin-bottom:14px;
+}
+.game-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+}
+.score{
+  font-weight:700;
+  font-size:18px;
+}
+
+/* ================= SKELETON ================= */
 .skeleton{
   height:14px;
   background:#222;
@@ -130,9 +137,7 @@ body{
   100%{opacity:.3}
 }
 
-/* ======================================================
-   TAB BAR
-====================================================== */
+/* ================= TAB BAR ================= */
 .tabbar{
   height:72px;
   background:#050505;
@@ -146,7 +151,6 @@ body{
   border:none;
   color:#777;
   font-size:11px;
-  transition:.2s;
 }
 .tabbar button.active{
   color:#fff;
@@ -155,76 +159,81 @@ body{
   display:block;
   font-size:18px;
 }
-
-/* ======================================================
-   MODAL
-====================================================== */
-.modal-ui{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.8);
-  display:none;
-  align-items:center;
-  justify-content:center;
-}
-.modal-ui.active{
-  display:flex;
-}
-.modal-box{
-  background:#0b0b0b;
-  border:1px solid #222;
-  border-radius:20px;
-  padding:20px;
-  width:90%;
-}
 </style>
 </head>
 
 <body>
 
-<div class="app animate__animated animate__fadeInUp">
+<div class="app">
 
-<!-- ======================================================
-     HEADER
-====================================================== -->
+<!-- ================= HEADER ================= -->
 <div class="header">
   <h1>UFLBarstool</h1>
-  <p>Official League Mobile App</p>
+  <p>League Mobile Hub</p>
 </div>
 
-<!-- ======================================================
-     PAGES
-====================================================== -->
+<!-- ================= PAGES ================= -->
 <div class="pages">
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 <div class="page active" id="home">
-  <div class="section-title">Upcoming Events</div>
+  <div class="section-title">Featured</div>
 
   <div class="card-ui">
-    <strong>UFL Week 10</strong>
-    <p>Saturday • 7:30 PM ET</p>
+    <strong>UFL Week 11</strong>
+    <p>Prime-Time Matchups</p>
   </div>
 
   <div class="card-ui">
-    <strong>Championship Media Day</strong>
-    <p>Press + Interviews</p>
-  </div>
-
-  <div class="section-title">League Feed</div>
-
-  <div class="card-ui">
-    <strong>Week 9 Recap</strong>
-    <p>Playoff picture tightens</p>
-  </div>
-
-  <div class="card-ui">
-    <strong>Power Rankings</strong>
-    <p>Top 3 unchanged</p>
+    <strong>Playoff Picture</strong>
+    <p>Top seeds tightening</p>
   </div>
 </div>
 
-<!-- ================= STATS ================= -->
+<!-- GAMES -->
+<div class="page" id="games">
+  <div class="section-title">This Week</div>
+
+  <div class="game-card">
+    <div class="game-row">
+      <span>Steel City</span>
+      <span class="score">24</span>
+    </div>
+    <div class="game-row">
+      <span>New York</span>
+      <span class="score">17</span>
+    </div>
+    <p class="text-xs text-gray-500 mt-2">Final</p>
+  </div>
+
+  <div class="game-card">
+    <div class="game-row">
+      <span>Dallas</span>
+      <span class="score">—</span>
+    </div>
+    <div class="game-row">
+      <span>Chicago</span>
+      <span class="score">—</span>
+    </div>
+    <p class="text-xs text-gray-500 mt-2">Sunday • 7:30 PM</p>
+  </div>
+
+  <div class="section-title">Completed</div>
+
+  <div class="game-card">
+    <div class="game-row">
+      <span>Miami</span>
+      <span class="score">31</span>
+    </div>
+    <div class="game-row">
+      <span>Atlanta</span>
+      <span class="score">28</span>
+    </div>
+    <p class="text-xs text-gray-500 mt-2">Week 10</p>
+  </div>
+</div>
+
+<!-- STATS -->
 <div class="page" id="stats">
   <div class="section-title">League Leaders</div>
 
@@ -235,48 +244,9 @@ body{
   <div class="card-ui row-ui">
     <span>Rushing TDs</span><span class="text-gray-400">RB #22</span>
   </div>
-
-  <div class="card-ui row-ui">
-    <span>Total Defense</span><span class="text-gray-400">Steel City</span>
-  </div>
-
-  <div class="section-title">Team Stats</div>
-
-  <div class="card-ui row-ui">
-    <span>Points / Game</span><span class="text-gray-400">27.8</span>
-  </div>
-
-  <div class="card-ui row-ui">
-    <span>Turnovers</span><span class="text-gray-400">+6</span>
-  </div>
 </div>
 
-<!-- ================= EVENTS ================= -->
-<div class="page" id="events">
-  <div class="section-title">Past Events</div>
-
-  <div class="card-ui">
-    <strong>Week 9</strong>
-    <p>Attendance: 20,014</p>
-  </div>
-
-  <div class="card-ui">
-    <strong>Rivalry Night</strong>
-    <p>Highest ratings</p>
-  </div>
-
-  <div class="section-title">Schedule Archive</div>
-
-  <div class="card-ui row-ui">
-    <span>Week 8</span><span class="text-gray-400">Complete</span>
-  </div>
-
-  <div class="card-ui row-ui">
-    <span>Week 7</span><span class="text-gray-400">Complete</span>
-  </div>
-</div>
-
-<!-- ================= AWARDS ================= -->
+<!-- AWARDS -->
 <div class="page" id="awards">
   <div class="section-title">Weekly Awards</div>
 
@@ -289,50 +259,29 @@ body{
     <strong>Defensive Player</strong>
     <p>LB #54 • 14 Tackles</p>
   </div>
-
-  <div class="section-title">Season Honors</div>
-
-  <div class="flex gap-2 flex-wrap">
-    <span class="badge-ui">Offensive POTY</span>
-    <span class="badge-ui">Defensive POTY</span>
-    <span class="badge-ui">Coach of Year</span>
-  </div>
 </div>
 
-<!-- ================= PROFILE ================= -->
+<!-- PROFILE -->
 <div class="page" id="profile">
-  <div class="section-title">User Profile</div>
+  <div class="section-title">Fan Profile</div>
 
   <div class="card-ui">
-    <strong>Guest Fan</strong>
-    <p>Not Logged In</p>
-  </div>
-
-  <div class="section-title">Preferences</div>
-
-  <div class="card-ui row-ui">
-    <span>Notifications</span><span class="text-gray-400">Enabled</span>
-  </div>
-
-  <div class="card-ui row-ui">
-    <span>Theme</span><span class="text-gray-400">Dark</span>
+    <strong>Guest Viewer</strong>
+    <p>Sign-in disabled</p>
   </div>
 
   <div class="section-title">Loading Preview</div>
   <div class="skeleton w-full"></div>
   <div class="skeleton w-3/4"></div>
-  <div class="skeleton w-1/2"></div>
 </div>
 
 </div>
 
-<!-- ======================================================
-     TAB BAR
-====================================================== -->
+<!-- ================= TAB BAR ================= -->
 <div class="tabbar">
   <button class="active" onclick="go('home',this)"><span>🏠</span>Home</button>
+  <button onclick="go('games',this)"><span>🏈</span>Games</button>
   <button onclick="go('stats',this)"><span>📊</span>Stats</button>
-  <button onclick="go('events',this)"><span>📅</span>Events</button>
   <button onclick="go('awards',this)"><span>🏆</span>Awards</button>
   <button onclick="go('profile',this)"><span>👤</span>Profile</button>
 </div>
